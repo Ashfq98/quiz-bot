@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from pathlib import Path
 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def env(key, default=None):
     try:
@@ -96,7 +99,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("redis", 6379)],
+            "hosts": [('127.0.0.1', 6379)],
         },
     },
 }
@@ -108,11 +111,11 @@ CHANNEL_LAYERS = {
 DATABASES = {
     'default': {
         'ENGINE': env('DB_ENGINE', 'django.db.backends.postgresql'),
-        'NAME': env('DB_NAME', 'postgres'),
-        'USER': env('DB_USER', 'postgres'),
-        'PASSWORD': env('DB_PASSWORD', 'password'),
-        'HOST': env('DB_HOST', 'db'),
-        'PORT': env('DB_PORT', '5432'),
+        'NAME': env('DB_NAME', 'impress_bot'),                        
+        'USER': env('DB_USER', 'postgres'),                           
+        'PASSWORD': env('DB_PASSWORD', '1234'),                       
+        'HOST': env('DB_HOST', 'localhost'),                          
+        'PORT': env('DB_PORT', '5432'),                              
     }
 }
 
